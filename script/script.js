@@ -15,9 +15,9 @@ let mission = 1000000;
 let start  = function(){
    money = prompt('Ваш месячный доход?');
 
-   while(!isNumber(money)){
+   do{
         money = prompt('Ваш месячный доход?');
-   }
+   } while(!isNumber(money))
 };
 start();
 
