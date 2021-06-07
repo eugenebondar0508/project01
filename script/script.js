@@ -6,7 +6,7 @@ let isNumber = function(n){
 
 let money;
 let start  = function(){
-    money = prompt('Ваш месячный доход?');
+
  
     do{
          money = prompt('Ваш месячный доход?');
@@ -41,12 +41,15 @@ let start  = function(){
                 expenses= prompt('Введите обязательную статью расходов?');
         
                do{
-                amount = +prompt('Во сколько это обойдется?');
+                amount = prompt('Во сколько это обойдется?');
+                
                } 
                 while(!isNumber(amount));
-                    appData.expenses[expenses] = +amount;
-  
-            }
+                
+                appData.expenses[expenses] = +amount;
+                   
+               
+            } 
         },
         getExpensesMonth: function(){
             for(let key in appData.expenses){
