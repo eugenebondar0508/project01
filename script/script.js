@@ -133,6 +133,9 @@ let start  = function(){
  appData.getExpensesMonth();
  appData.getBudget()
  appData.getTargetMonth();
+ appData.getInfoDeposit();
+appData.calcSavedMoney();
+
 
 
 
@@ -145,8 +148,6 @@ for(let key in appData){
 };
 
 
-appData.getInfoDeposit();
-appData.calcSavedMoney();
 
 let words = []
 for(let item of appData.addExpenses){
@@ -159,3 +160,24 @@ for(let item of appData.addExpenses){
 }
 console.log(`${words}`);
 
+
+const calculate = document.getElementById('start');
+const plus1 =  document.getElementsByTagName('button')[0];
+const plus2 =  document.getElementsByTagName('button')[1];
+const checkDeposit = document.querySelector('.deposit-checkmark');
+const additionalIncome = document.querySelectorAll('.additional_income-item');
+const dayValue = document.getElementsByClassName('budget_day-value')[0];
+const expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
+const additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
+const additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
+const incomePeriodValue = document.getElementsByClassName('income_period-value')[0];
+const targetMonthValue = document.getElementsByClassName('target_month-value')[0];
+const budgetMonthValue = document.querySelector('.budget_month-value');
+const period = document.querySelector('.period-select');
+const target = document.querySelector('.target-amount');
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
+const expensesTitle = document.querySelectorAll('.expenses-title')[1];
+const expensesAmount = document.querySelector('.expenses-amount');
+const incomeAmount = document.querySelector('.income-amount');
+const incomeTitle = document.querySelector('.income-title');
+const salaryAmount = document.querySelector('.salary-amount');
