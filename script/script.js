@@ -1,5 +1,5 @@
 'use strict';
-const calculate = document.getElementById('start');
+let calculate = document.getElementById('start');
 const plus1 =  document.getElementsByTagName('button')[0];
 const plus2 =  document.getElementsByTagName('button')[1];
 const checkDeposit = document.querySelector('.deposit-checkmark');
@@ -22,7 +22,7 @@ const salaryAmount = document.querySelector('.salary-amount');
 const incomeItem = document.querySelectorAll('.income-items');
 let incomeItems = document.querySelectorAll('.income-items');
 const periodAmount = document.querySelector('.period-amount');
-
+calculate.disabled = true;
 
 let isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -45,9 +45,7 @@ let isNumber = function(n){
      expenses:{},
      sum:0,
      start: function(){
-
- 
-
+         
 
         appData.budget = +salaryAmount.value;
         appData.getExpenses();
@@ -195,16 +193,18 @@ let isNumber = function(n){
     }, 
     startError: function(){
         if(salaryAmount.value === ''){
-            alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
-            return;
+            calculate.disabled = true;          
+        } else {
+            calculate.disabled = false;
         }
+        
+        
     }
 
-
  };
+ salaryAmount.addEventListener('input', appData.startError);
 
  calculate.addEventListener('click', appData.start);
- calculate.addEventListener('click',appData.startError);
  plus2.addEventListener('click', appData.addExpensesBlock);
  plus1.addEventListener('click', appData.addIncomeBlock);
  period.addEventListener('input', appData.changePeriod);
