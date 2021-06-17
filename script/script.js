@@ -150,7 +150,7 @@ class AppData {
         additionalIncomeValue.value = this.addIncome.join(', ');
         
         incomePeriodValue.value = _this.calcSavedMoney();
-        period.addEventListener('input', this.changeSavedMoney);
+        
        
     
     
@@ -280,7 +280,7 @@ class AppData {
         calculate.disabled = false;
     }
     
-    
+
  }
  changePercent(){
      const valueSelect = this.value;
@@ -291,20 +291,21 @@ class AppData {
          depositPercent.value = valueSelect;
          depositPercent.style.display = 'none';
 
-     }
+     } 
  }
-    otherPrecent(){
-        if(depositPercent.value > 100 || depositPercent.value <= 0 || !isNumber(depositPercent.value)){
-            
-            alert('Введите число от 0 до 100');
-            calculate.setAttribute('disabled', 'true');
-            
-        } else {
-            
-            calculate.removeAttribute('disabled');
 
-        }
-  }
+ otherPrecent() { 
+    if(depositPercent.value > 100 || depositPercent.value <= 0 || !isNumber(depositPercent.value)){
+        
+    alert('Введите число от 0 до 100');
+    calculate.setAttribute('disabled', 'true');
+    
+} else {
+    
+    calculate.removeAttribute('disabled');
+
+}}
+
 
  depositHandler(){
      if (checkDeposit.checked){
@@ -328,10 +329,20 @@ class AppData {
     cancel.addEventListener('click', this.reset.bind(appData));
     plus2.addEventListener('click', this.addExpensesBlock);
     plus1.addEventListener('click', this.addIncomeBlock);
-    period.addEventListener('change', this.changePeriod);
+    period.addEventListener('change', this.changePeriod.bind(this));
 
     checkDeposit.addEventListener('change', this.depositHandler.bind(this));
-    depositPercent.addEventListener('change', this.otherPrecent);
+    depositPercent.addEventListener('change',() => { if(depositPercent.value > 100 || depositPercent.value <= 0 || !isNumber(depositPercent.value)){
+            
+        alert('Введите число от 0 до 100');
+        calculate.setAttribute('disabled', 'true');
+        
+    } else {
+        
+        calculate.removeAttribute('disabled');
+
+    }});
+    period.addEventListener('input', this.changeSavedMoney.bind(this));
 }
 
 };
